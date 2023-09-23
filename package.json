@@ -19,7 +19,10 @@
   "dependencies": {
     "@electron-toolkit/preload": "^2.0.0",
     "@electron-toolkit/utils": "^2.0.0",
-    "electron-updater": "^6.1.1"
+    "electron-tabs": "^1.0.2",
+    "electron-updater": "^6.1.1",
+    "flowbite-react": "^0.6.1",
+    "react-tabs": "^6.0.2"
   },
   "devDependencies": {
     "@catppuccin/tailwindcss": "^0.1.6",
