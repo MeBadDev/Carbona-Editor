@@ -5,7 +5,17 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        blur: {
+          "0%": { filter: "blur(0px)" },
+          "100%": { filter: "blur(4px)" },
+        },
+      },
+      animation: {
+        blur: 'blur 2s ease-in-out infinite',
+      }
+    },
   },
   plugins: [
     require("@catppuccin/tailwindcss")({
