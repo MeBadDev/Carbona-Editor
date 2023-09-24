@@ -8,12 +8,12 @@ export default {
     extend: {
       keyframes: {
         blur: {
-          "0%": { filter: "blur(0px)" },
-          "100%": { filter: "blur(4px)" },
-        },
+          "0%": { "backdrop-filter": "blur(0px)", "display":"block" },
+          "100%": { "backdrop-filter": "blur(4px)", "display":"none" },
+        }
       },
       animation: {
-        blur: 'blur 2s ease-in-out infinite',
+        "fade-in": 'blur 300ms ease-in-out forwards',
       }
     },
   },

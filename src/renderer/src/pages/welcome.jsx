@@ -30,12 +30,12 @@ function Welcome() {
 
     return (
         <>
-            <div id="blur" className={`w-full h-full backdrop-blur-sm fixed z-10 pointer-events-none  ${isHovered ? '' : 'invisible'}`}
-            ></div>            <div className="flex flex-col text-center justify-center mx-auto">
+            <div id="blur" className={`w-full h-full fixed z-10 pointer-events-none  ${isHovered ? 'animate-fade-in' : ''}`}></div>
+            <div className="flex flex-col text-center justify-center mx-auto">
                 <pre id="ascii" className="tracking-widest leading-5 align-baseline text-white select-none text-[1.2vw]">
                     {ascii}
                 </pre>
-                <p className="text-2xl text-ctp-text mt-3 mb-16">Your Editor, Your Rules.</p>
+                <p className="text-2xl text-ctp-subtext0 mt-3 mb-16 tracking-wider font-light">Your Editor, Your Rules.</p>
                 <ul className="text-md text-ctp-blue flex gap-8 flex-col">
                     <WelcomeScreenAction icon="file_open" text="Open File ..." onHover={handleHover} />
                     <WelcomeScreenAction icon="folder_open" text="Open Folder ..." onHover={handleHover} />
