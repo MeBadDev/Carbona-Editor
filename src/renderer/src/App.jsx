@@ -17,11 +17,12 @@ function Editor() {
         <Sidebar>
 
           <div className="cursor-pointer">
-            <SidebarItem symbol="folder_open"/>
+            <SidebarItem symbol="folder_open" active/>
             <SidebarItem symbol="search"/>
             <SidebarItem symbol="extension"/>
             <SidebarItem symbol="account_circle"/>
             <SidebarItem symbol="settings"/>
+            <SidebarItem symbol="notifications_off"/>
             
           </div>
         </Sidebar>
