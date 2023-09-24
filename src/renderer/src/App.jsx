@@ -10,17 +10,15 @@ export default function App() {
 }
 
 function Sidebar() {
-  const items = [
-    {"key": "folder"}, {"key": "find"}, {"key": "settings"}, {"key": "account"}, {"key": "extension_store"}
-  ]
 
-  const childrens = items.map((item) => {
-    return (<SidebarItem key={item.key} />)
-  })
   return (
     <div className="p-3 bg-ctp-crust w-min h-full flex flex-col">
       <DndProvider backend={HTML5Backend}>
-        {childrens}
+        <SidebarItem/>
+        <SidebarItem/>
+        <SidebarItem/>
+        <SidebarItem/>
+        <SidebarItem/>
       </DndProvider>
     </div>
   )
