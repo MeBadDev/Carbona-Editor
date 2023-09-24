@@ -1,5 +1,6 @@
 import SidebarItem from './components/sidebar/SidebarItem'
 import Sidebar from './components/sidebar/Sidebar'
+import MaterialSymbol from './components/MaterialSymbols'
 
 export default function App() {
   return (
@@ -14,13 +15,17 @@ function Editor() {
     <div className=" w-full h-full absolute">
       <div className="w-full h-full absolute bg-ctp-base overflow-hidden min-h-0">
         <Sidebar>
-          <SidebarItem/>
-          <SidebarItem/>
-          <SidebarItem/>
-          <SidebarItem/>
-          <SidebarItem/>
-          
+
+          <div className="cursor-pointer">
+            <SidebarItem symbol="folder_open"/>
+            <SidebarItem symbol="search"/>
+            <SidebarItem symbol="extension"/>
+            <SidebarItem symbol="account_circle"/>
+            <SidebarItem symbol="settings"/>
+            
+          </div>
         </Sidebar>
+
       </div>
     </div>
   )
