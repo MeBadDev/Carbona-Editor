@@ -1,34 +1,19 @@
-# carbona-editor
+# Carbona Editor
+> Your Tool, Your Rules.
 
-An Electron application with React
+Carbona is a modern, lightweight and customizable IDE. 
 
-## Recommended IDE Setup
+## Contributing
+We appreciate any contribution to this project. We'll need
+* Translation
+* Pull requests
+* Plugins
+* Documentations
 
-- [VSCode](https://code.visualstudio.com/) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+If you are interested to contribute, please read CONTRIBUTING.md for more details.
 
-## Project Setup
-
-### Install
-
-```bash
-$ npm install
-```
-
-### Development
-
-```bash
-$ npm run dev
-```
-
-### Build
-
-```bash
-# For windows
-$ npm run build:win
-
-# For macOS
-$ npm run build:mac
-
-# For Linux
-$ npm run build:linux
-```
+## Build
+1. Clone the respository.
+2. Run `npm install` in the project root folder.
+3. Run `npm build`
+4. Submit your PR.
