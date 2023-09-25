@@ -15,5 +15,4 @@ If you are interested to contribute, please read CONTRIBUTING.md for more detail
 ## Build
 1. Clone the respository.
 2. Run `npm install` in the project root folder.
-3. Run `npm build`
-4. Submit your PR.
+3. Run `npm run dev` to start the electron app.
