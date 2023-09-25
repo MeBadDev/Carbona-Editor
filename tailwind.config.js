@@ -9,7 +9,7 @@ export default {
       keyframes: {
         blur: {
           "0%": { "backdrop-filter": "blur(0px)", "display":"block" },
-          "100%": { "backdrop-filter": "blur(4px)", "display":"none" },
+          "100%": { "backdrop-filter": "blur(1.8px)", "display":"none" },
         }
       },
       animation: {
