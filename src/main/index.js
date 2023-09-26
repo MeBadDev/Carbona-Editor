@@ -2,7 +2,7 @@ import { app, BrowserWindow, ipcMain } from 'electron'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import { dialog } from 'electron'
 import { join } from 'path'
-import { readdirSync } from 'fs'
+import { readdirSync , readFileSync, access, F_OK, readFile} from 'fs'
 import icon from '../../resources/icon.png?asset'
 
 function createWindow() {
@@ -41,6 +41,7 @@ function createWindow() {
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
   ipcMain.handle('dialog:openFolder', handleFolderOpen)
+  ipcMain.handle('dialog:openFile', handleFileOpen)
   electronApp.setAppUserModelId('com.mebaddev.carbona_editor')
 
   // Default open or close DevTools by F12 in development
@@ -69,7 +70,7 @@ app.on('window-all-closed', () => {
 })
 
 
-async function handleFolderOpen(event) {
+async function handleFolderOpen() {
   const result = await dialog.showOpenDialog({ properties: ['openDirectory'] });
   if (result.canceled) {
     return new Promise((resolve, reject) => {
@@ -80,4 +81,17 @@ async function handleFolderOpen(event) {
 
     return readdirSync(result.filePaths[0], {recursive: true, withFileTypes: true})
   }
+}
+
+async function handleFileOpen(event, path) {
+  if (!path) {event.reject('no path'); return}
+  access(path, F_OK, (err) => {
+    if (err) {
+      return new Promise((resolve, reject) => {
+        reject(err)
+      })
+    }
+  })
+
+  return readFileSync(path, {encoding: 'utf-8'})
 }

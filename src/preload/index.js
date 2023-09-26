@@ -7,8 +7,9 @@ const filesAPI = {
       const result = ipcRenderer.invoke('dialog:openFolder')
       return result
     },
-    readFile: () => {
-      console.log('readFile')
+    readFile: (filePath) => {
+      const result = ipcRenderer.invoke('dialog:openFile', filePath)
+      return result
     }
   
 }
