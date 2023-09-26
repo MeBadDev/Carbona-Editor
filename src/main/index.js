@@ -1,6 +1,8 @@
-import { app, shell, BrowserWindow } from 'electron'
-import { join } from 'path'
+import { app, BrowserWindow, ipcMain } from 'electron'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
+import { dialog } from 'electron'
+import { join } from 'path'
+import { readdirSync } from 'fs'
 import icon from '../../resources/icon.png?asset'
 
 function createWindow() {
@@ -10,7 +12,7 @@ function createWindow() {
     height: 768,
     show: false,
     autoHideMenuBar: true,
-    
+
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
       webviewTag: true,
@@ -23,10 +25,7 @@ function createWindow() {
     mainWindow.show()
   })
 
-  mainWindow.webContents.setWindowOpenHandler((details) => {
-    shell.openExternal(details.url)
-    return { action: 'deny' }
-  })
+
 
   // HMR for renderer base on electron-vite cli.
   // Load the remote URL for development or the local html file for production.
@@ -41,8 +40,8 @@ function createWindow() {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
-  // Set app user model id for windows
-  electronApp.setAppUserModelId('com.electron')
+  ipcMain.handle('dialog:openFolder', handleFolderOpen)
+  electronApp.setAppUserModelId('com.mebaddev.carbona_editor')
 
   // Default open or close DevTools by F12 in development
   // and ignore CommandOrControl + R in production.
@@ -69,5 +68,16 @@ app.on('window-all-closed', () => {
   }
 })
 
-// In this file you can include the rest of your app"s specific main process
-// code. You can also put them in separate files and require them here.
+
+async function handleFolderOpen(event) {
+  const result = await dialog.showOpenDialog({ properties: ['openDirectory'] });
+  if (result.canceled) {
+    return new Promise((resolve, reject) => {
+      reject('canceled')
+    })
+  }
+  else {
+
+    return readdirSync(result.filePaths[0], {recursive: true, withFileTypes: true})
+  }
+}

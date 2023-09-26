@@ -38,7 +38,7 @@ function Welcome() {
                 <p className="text-2xl text-ctp-subtext0 mt-3 mb-16 tracking-wider font-light">Your Editor, Your Rules.</p>
                 <ul className="text-md text-ctp-blue flex gap-8 flex-col">
                     <WelcomeScreenAction icon="file_open" text="Open File ..." onHover={handleHover} />
-                    <WelcomeScreenAction icon="folder_open" text="Open Folder ..." onHover={handleHover} />
+                    <WelcomeScreenAction icon="folder_open" text="Open Folder ..." onHover={handleHover} onClick={openFolder}/>
                     <WelcomeScreenAction icon="refresh" text="Load Last Session ..." onHover={handleHover} />
                 </ul>
             </div>
@@ -49,6 +49,17 @@ function Welcome() {
 }
 
 
+async function openFolder() {
+    let result = filesAPI.openFolder();
+    result.then((value) => {
+        console.log(value);
+    }
+    ).catch((err) => {
+        console.log(err);
+    }
+    )
+}
+
 function WelcomeScreenAction(props) {
     const handleHover = (isHovering) => {
         if (props.onHover) {
@@ -56,14 +67,15 @@ function WelcomeScreenAction(props) {
         }
     };
     return (<>
-        <div
+        <button
             className="welcome-screen-action cursor-pointer flex flex-row gap-2 mx-auto transform hover:scale-150 duration-300 px-3 pt-3 rounded-md z-0 hover:z-20 hover:bg-ctp-crust ease-in-out"
             onMouseEnter={() => handleHover(true)}
             onMouseLeave={() => handleHover(false)}
+            onClick={props.onClick}
         >
             <MaterialSymbol symbol={props.icon != null ? props.icon : ""} size="lg" style=" pb-2 mr-3" />
             <li className="hover:underline cursor-pointer ">{props.text}</li>
-        </div>
+        </button>
     </>)
 }
 export default Welcome
